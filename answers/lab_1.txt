@@ -1,0 +1,24 @@
+vboxuser@ros:~/catkin_ws/src/ros_edu_super_secret_package$ rosrun ros_edu_super_secret_package broken_script.py
+  File "/home/vboxuser/catkin_ws/src/ros_edu_super_secret_package/scripts/broken_script.py", line 21
+    for num on fibonacci_numbers:
+            ^
+SyntaxError: invalid syntax
+
+Пояснение: Узел содержит синтаксическую ошибку в коде (неправильный оператор on вместо in), не компилируется.
+
+
+vboxuser@ros:~/catkin_ws/src/ros_edu_super_secret_package$ rosrun ros_edu_super_secret_package hack_secret_data.py 
+Start hacking
+Grant access to super secret data storage
+......
+Failed
+ (╯°□°）╯︵ ┻━┻)
+Okay, try another way
+......
+Access granted
+┬─┬ノ( º _ ºノ)
+Copying super secret data
+......
+Data hacked and copied for 26.04 [sec], you are awesome!
+
+Пояснение: Имитирует процесс взлома данных с выводом действий.
