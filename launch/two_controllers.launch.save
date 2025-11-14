@@ -1,0 +1,29 @@
+<launch>
+    <!-- Контроллер 1 -->
+    <group ns="controller1">
+        <node name="even_publisher" pkg="nazarova_alina_study_pk" type="even_publisher.py" output="screen">
+            <remap from="even_numbers" to="controller1/even_numbers"/>
+        </node>
+        <node name="overflow_detector" pkg="study_pkg" type="overflow_detector.py" output="screen">
+            <remap from="even_numbers" to="controller1/even_numbers"/>
+            <remap from="overflow" to="controller1/overflow"/>
+        </node>
+        <node name="overflow_listener" pkg="study_pkg" type="overflow_listener.py" output="screen">
+            <remap from="overflow" to="controller1/overflow"/>
+        </node>
+    </group>
+
+    <!-- Контроллер 2 -->
+    <group ns="controller2">
+        <node name="even_publisher" pkg="study_pkg" type="even_publisher.py" output="screen">
+            <remap from="even_numbers" to="controller2/even_numbers"/>
+        </node>
+        <node name="overflow_detector" pkg="study_pkg" type="overflow_detector.py" output="screen">
+            <remap from="even_numbers" to="controller2/even_numbers"/>
+            <remap from="overflow" to="controller2/overflow"/>
+        </node>
+        <node name="overflow_listener" pkg="study_pkg" type="overflow_listener.py" output="screen">
+            <remap from="overflow" to="controller2/overflow"/>
+        </node>
+    </group>
+</launch>
