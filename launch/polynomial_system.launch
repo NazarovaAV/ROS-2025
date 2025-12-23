@@ -1,0 +1,7 @@
+<launch>
+  <!-- Узел Polynominal (постоянно работает) -->
+  <node name="polynomial" pkg="nazarova_alina_study_pkg" type="polynomial_node.py" output="screen"/>
+  
+  <!-- Узел Summing (постоянно работает) -->
+  <node name="summing" pkg="nazarova_alina_study_pkg" type="summing_node.py" output="screen"/>
+</launch>
