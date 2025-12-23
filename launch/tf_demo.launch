@@ -1,0 +1,30 @@
+<launch>
+  <!-- Запускаем симулятор черепашек -->
+  <node pkg="turtlesim" type="turtlesim_node" name="simulator"/>
+  
+  <!-- Управление первой черепашкой с клавиатуры -->
+  <node pkg="turtlesim" type="turtle_teleop_key" name="keyboard" output="screen"/>
+  
+  <!-- Наш TF broadaster для первой черепашки -->
+  <node pkg="nazarova_alina_study_pkg" 
+        type="turtle_tf_broadcaster.py" 
+        name="turtle1_tf_broadcaster" 
+        output="screen">
+    <!-- Приватный параметр: имя системы координат черепашки -->
+    <param name="turtle_tf_name" type="string" value="turtle1"/>
+    
+    <!-- Мапим топик: наш input_pose -> turtle1/pose -->
+    <remap from="input_pose" to="turtle1/pose"/>
+  </node>
+  
+  <!-- Статическое преобразование: от turtle1 к carrot (морковка) -->
+  <!-- Смещение: 0.3 метра по X (вперед от черепашки) -->
+  <!-- Аргументы: x y z yaw pitch roll frame_id child_frame_id период_мс -->
+  <node pkg="tf" 
+        type="static_transform_publisher" 
+        name="turtle1_to_carrot" 
+        args="0.3 0 0 0 0 0 turtle1 carrot 100"/>
+  
+  <!-- Запускаем Rviz для визуализации -->
+  <node pkg="rviz" type="rviz" name="rviz"/>
+</launch>
